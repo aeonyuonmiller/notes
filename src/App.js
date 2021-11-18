@@ -1,25 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef, useState } from "react";
+import { signup, login, logout, useAuth } from "./firebase";
+// import logo from "./logo.svg";
+import "./App.css";
+
+import Login from "./views/Login/Login";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuth();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  async function handleSignup() {
+    setLoading(true);
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert("Account already exists!");
+    }
+    setLoading(false);
+  }
+  async function handleLogin() {
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      alert("Already logged in!");
+    }
+    setLoading(false);
+  }
+
+  async function handleLogout() {
+    setLoading(true);
+    try {
+      await logout();
+    } catch {
+      alert("Error!");
+    }
+    setLoading(false);
+  }
+
   return (
     <div className="App">
+      <Login />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>Logged in as: {currentUser?.email} </div>
+        <input ref={emailRef} placeholder="Email" />
+        <input ref={passwordRef} type="password" placeholder="Password" />
+        <button disabled={loading || currentUser} onClick={handleSignup}>
+          Register
+        </button>
+        <button disabled={loading || currentUser} onClick={handleLogin}>
+          Login
+        </button>
+        <button disabled={loading || !currentUser} onClick={handleLogout}>
+          Logout
+        </button>
       </header>
     </div>
   );
+}
+
+{
+  /* <style jsx global>{`
+  :root {
+    --brand: hsl(169, 90, 82%);
+    --brand-mid: hsl(169, 20, 82%);
+    --brand-dark: hsl(169, 90, 12%);
+    --lightgrey: hsl(0, 0, 96%);
+    --type: hsl(0, 0, 70%);
+  }
+`}</style>; */
 }
 
 export default App;
