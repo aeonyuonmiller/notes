@@ -1,0 +1,5 @@
+button {
+  background-color: var(--brand);
+  border-radius: 50%;
+  height: 45px;
+}

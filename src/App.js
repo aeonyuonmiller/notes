@@ -60,16 +60,4 @@ function App() {
   );
 }
 
-{
-  /* <style jsx global>{`
-  :root {
-    --brand: hsl(169, 90, 82%);
-    --brand-mid: hsl(169, 20, 82%);
-    --brand-dark: hsl(169, 90, 12%);
-    --lightgrey: hsl(0, 0, 96%);
-    --type: hsl(0, 0, 70%);
-  }
-`}</style>; */
-}
-
 export default App;
