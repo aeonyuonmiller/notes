@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { signup, login, logout, useAuth } from "./firebase";
 // import logo from "./logo.svg";
 import "./App.css";
 
-import Login from "./views/Login/Login";
+// import Login from "./views/Login/Login";
+import Button from "./components/Button/Button";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -41,14 +43,15 @@ function App() {
 
   return (
     <div className="App">
-      <Login />
       <header className="App-header">
-        <div>Logged in as: {currentUser?.email} </div>
+        <div>{currentUser?.email}</div>
         <input ref={emailRef} placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
-        <button disabled={loading || currentUser} onClick={handleSignup}>
-          Register
-        </button>
+        <Button
+          disabled={loading || currentUser}
+          onPress={handleSignup}
+          text="Register"
+        />
         <button disabled={loading || currentUser} onClick={handleLogin}>
           Login
         </button>

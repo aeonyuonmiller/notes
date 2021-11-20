@@ -1,0 +1,9 @@
+h1  {
+  font-size: 30px;
+  color: var(--brand);
+}
+
+h1 span {
+  font-size: 18px;
+  color: var(--type);
+}
