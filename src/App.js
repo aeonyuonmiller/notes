@@ -30,7 +30,6 @@ function App() {
     }
     setLoading(false);
   }
-
   async function handleLogout() {
     setLoading(true);
     try {
@@ -49,7 +48,7 @@ function App() {
         <input ref={passwordRef} type="password" placeholder="Password" />
         <Button
           disabled={loading || currentUser}
-          onPress={handleSignup}
+          onClick={handleSignup}
           text="Register"
         />
         <button disabled={loading || currentUser} onClick={handleLogin}>
