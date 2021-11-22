@@ -8,6 +8,7 @@
   --lightgrey: hsl(0, 0%, 96%);
   --background: hsl(0, 0%, 99%);
   --type: hsl(0, 0%, 70%);
+  --type2: hsl(0, 0%, 40%);
 }
 
 body {

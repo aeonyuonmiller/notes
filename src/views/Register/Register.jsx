@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../components/Button/Button'
+import Link from '../../components/Link/Link'
 import './Register.css'
 
 const Register = () => {
@@ -12,6 +13,8 @@ const Register = () => {
             <div className="form">
                 EMAIL and PASSWORD
                 <Button text="Register" />
+                <Link href="#" text="Login" />
+                <Link href="#" text="Forgot password" />
             </div>
         </div>
     )
