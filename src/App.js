@@ -12,6 +12,7 @@ import "./App.css";
 // import Login from "./views/Login/Login";
 import Button from "./components/Button/Button";
 import Splash from "./views/Splash/Splash";
+import Loading from "./views/Loading/Loading";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      <Splash />
+      <Loading />
+      {/* <Splash /> */}
       <header className="App-header">
         <div>{currentUser?.email}</div>
         <input ref={emailRef} placeholder="Email" />
