@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import {
+  // firebase,
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -22,6 +23,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+// export const db = firebase.database();
+
 export function logout() {
   return signOut(auth);
 }
