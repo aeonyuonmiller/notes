@@ -13,6 +13,7 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Splash from "./views/Splash/Splash";
 import Loading from "./views/Loading/Loading";
+import Register from "./views/Register/Register";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <Loading />
+      <Register />
       {/* <Splash /> */}
       <header className="App-header">
         <div>{currentUser?.email}</div>
