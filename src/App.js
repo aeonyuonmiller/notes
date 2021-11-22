@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+// import {
+//   Route,
+//   BrowserRouter as Router,
+//   Switch,
+//   Redirect,
+// } from "react-router-dom";
 import { signup, login, logout, useAuth } from "./firebase";
 // import logo from "./logo.svg";
 import "./App.css";

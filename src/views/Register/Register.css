@@ -1,8 +1,8 @@
 .wrapper {
   position: absolute;
   display: flex;
-  width: 90%;
-  left: 5%;
+  width: 100%;
+  left: 0;
   justify-content: center;
   align-items: center;
   top: 0;
@@ -11,11 +11,19 @@
   left: 0;
 }
 
-h1 {
-  color: red;
+.title {
+  position: absolute;
 }
 
-.title {
-  border: 1px solid red;
+.form {
   position: absolute;
+  bottom: 100px;
+  width: 70%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .primary {
+  align-self: flex-end;
 }
