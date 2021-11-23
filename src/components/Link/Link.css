@@ -16,11 +16,11 @@
 .underline:after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: calc(100% + 10px);
   transform: scaleX(1);
   height: 2px;
   bottom: -5px;
-  left: 0;
+  left: -5px;
   background-color: var(--brand);
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;

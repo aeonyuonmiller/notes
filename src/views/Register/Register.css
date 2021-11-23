@@ -28,3 +28,12 @@
 .form .primary {
   align-self: flex-end;
 }
+
+.sub-nav {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+}
