@@ -24,16 +24,25 @@ input {
   border-radius: 22px;
   border: none;
   height: 60px;
-  width: 60%;
-  max-width: 400px;
-  padding: 0 1.5em;
+  width: calc(100% - 3em);
   color: var(--type);
+  padding: 0 1.5em;
   display: flex;
   align-items: center;
   font-weight: bold;
   background: var(--lightgrey);
   margin-bottom: 8px;
   outline: 2px solid transparent;
+}
+
+input::placeholder {
+  opacity: 1;
+  transition: all ease 0.3s;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 input:focus {
