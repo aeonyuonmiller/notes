@@ -49,13 +49,3 @@ input:focus {
   outline: 2px solid var(--brand);
   transition: all ease 0.4s;
 }
-
-h1 {
-  font-size: 30px;
-  color: var(--brand-mid);
-}
-
-h1 span {
-  font-size: 18px;
-  color: var(--brand-dark);
-}

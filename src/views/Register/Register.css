@@ -12,13 +12,41 @@
 }
 
 .title {
-  position: absolute;
+  position: relative;
   display: flex;
+  flex-direction: row;
+  gap: 1em;
+  height: 8em;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title div {
+  background: var(--brand);
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title p {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--brand-mid);
+}
+
+.title p span {
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--brand-dark);
 }
 
 .form {
   position: absolute;
-  bottom: 100px;
+  bottom: 120px;
   width: 70%;
   max-width: 450px;
   display: flex;

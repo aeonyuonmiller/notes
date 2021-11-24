@@ -10,8 +10,8 @@ const Register = () => {
     return (
         <div className="wrapper">
             <div className="title">
-                <h2>🌍</h2>
-                <h1>Create <span>your account</span></h1>
+                <div>🌍</div>
+                <p>Create <span>your account</span></p>
             </div>
             <div className="form">
                 <input ref={emailRef} placeholder="Email" />
