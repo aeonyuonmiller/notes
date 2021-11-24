@@ -1,10 +1,5 @@
 import { useRef, useState } from "react";
-// import {
-//   Route,
-//   BrowserRouter as Router,
-//   Switch,
-//   Redirect,
-// } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { signup, login, logout, useAuth } from "./firebase";
 // import logo from "./logo.svg";
 import "./App.css";
@@ -13,7 +8,10 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Splash from "./views/Splash/Splash";
 import Loading from "./views/Loading/Loading";
+
+import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
+import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -50,7 +48,17 @@ function App() {
 
   return (
     <div className="App">
-      <Register />
+      <Switch>
+        <Route path="/" exact>
+          <Register />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+        <Route path="/forgot-password" exact>
+          <ForgotPassword />
+        </Route>
+      </Switch>
       {/* <Splash /> */}
       <header className="App-header">
         <div>{currentUser?.email}</div>
