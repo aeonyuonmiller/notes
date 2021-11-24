@@ -52,14 +52,13 @@ function App() {
         <Route path="/" exact>
           <Register />
         </Route>
-        <Route path="/login" exact>
+        <Route path="/login">
           <Login />
         </Route>
-        <Route path="/forgot-password" exact>
+        <Route path="/forgot-password">
           <ForgotPassword />
         </Route>
       </Switch>
-      {/* <Splash /> */}
       <header className="App-header">
         <div>{currentUser?.email}</div>
         <input ref={emailRef} placeholder="Email" />

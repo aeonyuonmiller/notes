@@ -30,7 +30,8 @@ button.primary:focus {
   outline: var(--type);
 }
 
-button.primary:hover svg {
+button.primary:hover svg,
+button.primary:focus svg {
   transform: translateX(3px);
 }
 
