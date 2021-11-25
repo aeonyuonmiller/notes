@@ -7,6 +7,17 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: all ease 0.3s;
+  outline-offset: 1em;
+}
+
+.underline:before {
+  content: "";
+  position: absolute;
+  top: -1em;
+  left: -1em;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
 }
 
 .underline:hover {
@@ -26,7 +37,8 @@
   transition: transform 0.25s ease-out;
 }
 
-.underline:hover:after {
+.underline:hover:after,
+.underline:focus:after {
   transform: scaleX(0);
   transform-origin: bottom left;
 }

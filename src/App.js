@@ -50,6 +50,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact>
+          {/* nothing */}
+        </Route>
+        <Route path="/register">
           <Register />
         </Route>
         <Route path="/login">
@@ -59,7 +62,8 @@ function App() {
           <ForgotPassword />
         </Route>
       </Switch>
-      <header className="App-header">
+      Home
+      {/* <header className="App-header">
         <div>{currentUser?.email}</div>
         <input ref={emailRef} placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
@@ -74,7 +78,7 @@ function App() {
         <button disabled={loading || !currentUser} onClick={handleLogout}>
           Logout
         </button>
-      </header>
+      </header> */}
     </div>
   );
 }
