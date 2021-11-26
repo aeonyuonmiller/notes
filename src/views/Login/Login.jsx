@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import Button from '../../components/Button/Button'
-import Link from '../../components/Link/Link'
+import Linker from '../../components/Link/Link'
 import './Login.css'
 
 const Login = () => {
@@ -21,8 +21,8 @@ const Login = () => {
 
             </div>
             <div className="sub-nav">
-                <Link href="/register" text="Register" />
-                <Link href="/forgot-password" text="Forgot password" />
+                <Linker to="/register" text="Register" />
+                <Linker to="/forgot-password" text="Forgot password" />
             </div>
         </div>
     )

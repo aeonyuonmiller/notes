@@ -4,14 +4,16 @@ import { signup, login, logout, useAuth } from "./firebase";
 // import logo from "./logo.svg";
 import "./App.css";
 
+// views
 // import Login from "./views/Login/Login";
-import Button from "./components/Button/Button";
 import Splash from "./views/Splash/Splash";
 import Loading from "./views/Loading/Loading";
-
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
+
+// components
+import Button from "./components/Button/Button";
 
 function App() {
   const [loading, setLoading] = useState(false);

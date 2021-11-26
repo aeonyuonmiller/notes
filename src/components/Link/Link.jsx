@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import './Link.css'
 
-const Link = (props) => {
+const Linker = (props, { onClick }) => {
+    // console.log(props)
+
     return (
-        <a className="underline" href={props.href}>
+        <Link className="underline" onClick={onClick} to={props.to}>
             {props.text}
-        </a>
+        </Link>
     )
 }
 
-export default Link
+export default Linker

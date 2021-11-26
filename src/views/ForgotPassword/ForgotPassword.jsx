@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import Button from '../../components/Button/Button'
-import Link from '../../components/Link/Link'
+import Linker from '../../components/Link/Link'
 import './ForgotPassword.css'
 
 const ForgotPassword = () => {
@@ -20,8 +20,8 @@ const ForgotPassword = () => {
 
             </div>
             <div className="sub-nav">
-                <Link href="/register" text="Register" />
-                <Link href="/login" text="Login" />
+                <Linker to="/register" text="Register" />
+                <Linker to="/login" text="Login" />
             </div>
         </div>
     )

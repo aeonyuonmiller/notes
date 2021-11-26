@@ -1,11 +1,14 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
+import { useHistory } from "react-router-dom";
+
 import Button from '../../components/Button/Button'
 import Link from '../../components/Link/Link'
 import './Register.css'
 
 const Register = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    // const history = useHistory();
 
     return (
         <div className="wrapper">
@@ -21,8 +24,9 @@ const Register = () => {
 
             </div>
             <div className="sub-nav">
-                <Link href="/login" text="Login" />
-                <Link href="/forgot-password" text="Forgot password" />
+                {/* <Button text="test" onClick={() => history.push("/login")} /> */}
+                <Link to="/login" text="Login" />
+                <Link to="/forgot-password" text="Forgot password" />
             </div>
         </div>
     )
