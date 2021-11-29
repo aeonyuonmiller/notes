@@ -1,0 +1,15 @@
+.topnav {
+  height: 88px;
+  width: calc(100% - 4em);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+}
+.map {
+  background: grey;
+  width: calc(100% - 16px);
+  height: calc(100vh - 96px);
+  margin: 0 8px;
+  border-radius: 22px;
+}
