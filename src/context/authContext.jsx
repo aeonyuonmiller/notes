@@ -14,15 +14,28 @@ export const AuthContextProvider = (props) => {   // 2. create provider
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
-  async function handleSignup(email, password) {
+  function handleSignup(email, password) {
     setLoading(true);
-    try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      setUser(user);
-      console.log(user);
-    } catch {
-      alert("Account already exists!");
-    }
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              console.log(user)
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(error)
+
+            });
+    // try {
+    //   // const user = await createUserWithEmailAndPassword(auth, email, password);
+    //   // setUser(user);
+    //   console.log(user);
+    // } catch (error) {
+    //   console.log(error);
+    //   alert("Account already exists!");
+    // }
     setLoading(false);
   }
   // async function handleLogin() {

@@ -10,7 +10,7 @@ const Register = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const {user, setUser, handleSignup, loading} = useContext(AuthContext)
-    // const history = useHistory();
+
     function handleRegister() {
         handleSignup(emailRef, passwordRef);
     }
@@ -26,7 +26,6 @@ const Register = () => {
                 <input ref={passwordRef} type="password" placeholder="Password" />
                 {/* <TextInput ref="emailRef" placeholder="Email" /> */}
                 <Button text="Register" onClick={handleRegister} />
-
             </div>
             <div className="sub-nav">
                 {/* decomment useHistory */}
