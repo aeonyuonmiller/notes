@@ -1,71 +1,28 @@
 import { useRef, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { signup, login, logout, useAuth } from "./firebase";
-// import logo from "./logo.svg";
 import "./App.css";
+import { AuthContextProvider } from "./context/authContext";
 
-// views
-// import Login from "./views/Login/Login";
-import Splash from "./views/Splash/Splash";
-import Loading from "./views/Loading/Loading";
+// import Splash from "./views/Splash/Splash";
+// import Loading from "./views/Loading/Loading";
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
-
-// components
-import Button from "./components/Button/Button";
+import Map from "./views/Map/Map";
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const currentUser = useAuth();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  async function handleSignup() {
-    setLoading(true);
-    try {
-      await signup(emailRef.current.value, passwordRef.current.value);
-    } catch {
-      alert("Account already exists!");
-    }
-    setLoading(false);
-  }
-  async function handleLogin() {
-    setLoading(true);
-    try {
-      await login(emailRef.current.value, passwordRef.current.value);
-    } catch {
-      alert("Already logged in!");
-    }
-    setLoading(false);
-  }
-  async function handleLogout() {
-    setLoading(true);
-    try {
-      await logout();
-    } catch {
-      alert("Error!");
-    }
-    setLoading(false);
-  }
-
   return (
     <div className="App">
-      <Switch>
-        <Route path="/" exact>
-          {/* nothing */}
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/forgot-password">
-          <ForgotPassword />
-        </Route>
-      </Switch>
-      Home
-      {/* <header className="App-header">
+      <AuthContextProvider>
+        <Switch>
+          <Route path="/" exact />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/map" component={Map} />
+        </Switch>
+        {/* <header className="App-header">
         <div>{currentUser?.email}</div>
         <input ref={emailRef} placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
@@ -81,6 +38,7 @@ function App() {
           Logout
         </button>
       </header> */}
+      </AuthContextProvider>
     </div>
   );
 }
