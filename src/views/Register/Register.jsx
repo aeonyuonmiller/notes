@@ -12,7 +12,7 @@ const Register = () => {
     const {user, setUser, handleSignup, loading} = useContext(AuthContext)
 
     function handleRegister() {
-        handleSignup(emailRef, passwordRef);
+        handleSignup(emailRef.current.value, passwordRef.current.value);
     }
 
     return (
@@ -28,8 +28,6 @@ const Register = () => {
                 <Button text="Register" onClick={handleRegister} />
             </div>
             <div className="sub-nav">
-                {/* decomment useHistory */}
-                {/* <Button text="test" onClick={() => history.push("/login")} /> */}
                 <Link to="/login" text="Login" />
                 <Link to="/forgot-password" text="Forgot password" />
             </div>
