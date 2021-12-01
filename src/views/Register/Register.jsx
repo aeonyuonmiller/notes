@@ -1,10 +1,9 @@
 import React, { useRef, useContext } from 'react'
-// import { useHistory } from "react-router-dom";
+import { AuthContext } from '../../context/authContext'
+import './Register.css'
 
 import Button from '../../components/Button/Button'
 import Link from '../../components/Link/Link'
-import { AuthContext } from '../../context/authContext'
-import './Register.css'
 
 const Register = () => {
     const emailRef = useRef();
@@ -24,14 +23,13 @@ const Register = () => {
             <div className="form">
                 <input ref={emailRef} placeholder="Email" />
                 <input ref={passwordRef} type="password" placeholder="Password" />
-                {/* <TextInput ref="emailRef" placeholder="Email" /> */}
-                <Button text="Register" onClick={handleRegister} />
+                <Button text="Register" onClick={handleRegister} disabled={loading} />
             </div>
             <div className="sub-nav">
                 <Link to="/login" text="Login" />
                 <Link to="/forgot-password" text="Forgot password" />
             </div>
-        </div>
+    </div>
     )
 }
 

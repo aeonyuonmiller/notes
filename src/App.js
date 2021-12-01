@@ -16,8 +16,7 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <Switch>
-          <Route path="/" exact />
-          <Route path="/register" component={Register} />
+          <Route path="/" exact component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />

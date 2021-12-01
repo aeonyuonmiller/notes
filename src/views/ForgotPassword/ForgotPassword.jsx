@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 
             </div>
             <div className="sub-nav">
-                <Linker to="/register" text="Register" />
+                <Linker to="/" text="Register" />
                 <Linker to="/login" text="Login" />
             </div>
         </div>
