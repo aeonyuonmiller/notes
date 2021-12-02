@@ -10,17 +10,20 @@ import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
 import Map from "./views/Map/Map";
+import ProtectedRoute from "./context/protectedRoute";
 
 function App() {
   return (
     <div className="App">
       <AuthContextProvider>
         <Switch>
-          <Route path="/" exact />
-          <Route path="/register" component={Register} />
+          {/* <Route path="/" exact /> */}
+          <Route path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/map" component={Map} />
+          <ProtectedRoute path="/map">
+            <Map />
+          </ProtectedRoute>
         </Switch>
         {/* <header className="App-header">
         <div>{currentUser?.email}</div>
