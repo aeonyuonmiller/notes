@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Redirect } from 'react-router'
+import { AuthContext } from '../../context/authContext'
 import './Map.css'
 
 import Button from '../../components/Button/Button'
 
 const Map = () => {
+    const { user } = useContext(AuthContext);
+    console.log("something", user);
+
     return (
+        
         <>
             <div className="topnav">
                 <Button text="Leave note" />
@@ -12,7 +18,6 @@ const Map = () => {
                 <Button text="Profile"/>
             </div>
             <div className="map">
-
             </div>
         </>
     )

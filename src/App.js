@@ -10,6 +10,7 @@ import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import ForgotPassword from "./views/ForgotPassword/ForgotPassword";
 import Map from "./views/Map/Map";
+import ProtectedRoute from "./context/protectedRoute";
 
 function App() {
   return (
@@ -19,24 +20,15 @@ function App() {
           <Route path="/" exact component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/map" component={Map} />
+          <ProtectedRoute exact path="/map">
+            <Map />
+          </ProtectedRoute>
         </Switch>
-        {/* <header className="App-header">
-        <div>{currentUser?.email}</div>
-        <input ref={emailRef} placeholder="Email" />
-        <input ref={passwordRef} type="password" placeholder="Password" />
-        <Button
-          disabled={loading || currentUser}
-          onClick={handleSignup}
-          text="Register"
-        />
+        {/* 
         <button disabled={loading || currentUser} onClick={handleLogin}>
           Login
         </button>
-        <button disabled={loading || !currentUser} onClick={handleLogout}>
-          Logout
-        </button>
-      </header> */}
+        */}
       </AuthContextProvider>
     </div>
   );
