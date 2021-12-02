@@ -13,14 +13,18 @@ export const AuthContext = createContext(); // 1. create context
 export const AuthContextProvider = (props) => {
   // 2. create provider
   const [user, setUser] = useState(null); // 3. state and function
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const auth = getAuth();
   let history = useHistory();
   console.log("user from context", user);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => setUser(user));
-    return unsub;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setLoading(false);
+      } else setUser(null);
+    });
   }, []);
 
   async function handleSignup(email, password) {

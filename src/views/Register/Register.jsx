@@ -25,7 +25,7 @@ const Register = () => {
       <div className="form">
         <input ref={emailRef} placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
-        <Button text="Register" onClick={handleRegister} disabled={loading} />
+        <Button text="Register" onClick={handleRegister} />
       </div>
       <div className="sub-nav">
         <Link to="/login" text="Login" />
