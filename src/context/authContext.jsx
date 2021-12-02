@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   // firebase,
   getAuth,
@@ -14,30 +15,24 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null); // 3. state and function
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
+  let history = useHistory();
+  console.log("user from context", user);
 
-  function handleSignup(email, password) {
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => setUser(user));
+    return unsub;
+  }, []);
+
+  async function handleSignup(email, password) {
     setLoading(true);
-    console.log(`email`, email);
-    console.log(`password`, password);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-      });
-    // try {
-    //   // const user = await createUserWithEmailAndPassword(auth, email, password);
-    //   // setUser(user);
-    //   console.log(user);
-    // } catch (error) {
-    //   console.log(error);
-    //   alert("Account already exists!");
-    // }
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      setUser(user);
+      history.push("/map");
+    } catch (error) {
+      console.log(error);
+      alert("Account already exists!");
+    }
     setLoading(false);
   }
   // async function handleLogin() {
@@ -74,14 +69,15 @@ export const AuthContextProvider = (props) => {
 // export function login(email, password) {
 //   return signInWithEmailAndPassword(auth, email, password);
 // }
-// // Custom Hook
+
+// Custom Hook
 // export function useAuth() {
 //   const [currentUser, setCurrentUser] = useState();
 
-//   useEffect(() => {
-//     const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
-//     return unsub;
-//   }, []);
+// useEffect(() => {
+//   const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+//   return unsub;
+// }, []);
 
 //   return currentUser;
 // }

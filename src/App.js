@@ -17,30 +17,18 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <Switch>
-          {/* <Route path="/" exact /> */}
-          <Route path="/" component={Register} />
+          <Route path="/" exact component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
-          <ProtectedRoute path="/map">
+          <ProtectedRoute exact path="/map">
             <Map />
           </ProtectedRoute>
         </Switch>
-        {/* <header className="App-header">
-        <div>{currentUser?.email}</div>
-        <input ref={emailRef} placeholder="Email" />
-        <input ref={passwordRef} type="password" placeholder="Password" />
-        <Button
-          disabled={loading || currentUser}
-          onClick={handleSignup}
-          text="Register"
-        />
+        {/* 
         <button disabled={loading || currentUser} onClick={handleLogin}>
           Login
         </button>
-        <button disabled={loading || !currentUser} onClick={handleLogout}>
-          Logout
-        </button>
-      </header> */}
+        */}
       </AuthContextProvider>
     </div>
   );

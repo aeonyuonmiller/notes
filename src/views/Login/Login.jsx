@@ -1,11 +1,18 @@
-import React, {useRef} from 'react'
-import Button from '../../components/Button/Button'
-import Linker from '../../components/Link/Link'
+import React, { useRef, useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
 import './Login.css'
 
+import Button from '../../components/Button/Button'
+import Linker from '../../components/Link/Link'
+
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const {user, setUser, handleLogin, loading} = useContext(AuthContext)
+    
+    // function handleEnter() {
+    //     handleLogin(emailRef.current.value, passwordRef.current.value);
+    // }
 
     return (
         <div className="wrapper">
@@ -15,13 +22,11 @@ const Login = () => {
             </div>
             <div className="form">
                 <input ref={emailRef} placeholder="Email" />
-                <input ref={passwordRef} type="password" placeholder="Password" />
-                {/* <TextInput ref="emailRef" placeholder="Email" /> */}
+                <input ref={passwordRef} placeholder="Password" type="password" />
                 <Button text="Login" />
-
             </div>
             <div className="sub-nav">
-                <Linker to="/register" text="Register" />
+                <Linker to="/" text="Register" />
                 <Linker to="/forgot-password" text="Forgot password" />
             </div>
         </div>
