@@ -9,23 +9,23 @@ import {
   signOut,
 } from "firebase/auth";
 
-export const AuthContext = createContext(); // 1. create context
-export const AuthContextProvider = (props) => {
-  // 2. create provider
-  const [user, setUser] = useState(null); // 3. state and function
-  const [loading, setLoading] = useState(true);
+export const AuthContext = createContext();        // 1. create context
+export const AuthContextProvider = (props) => {   // 2. create provider
+  const [user, setUser] = useState(null)         // 3. state and function
+  const [loading, setLoading] = useState(false);
   const auth = getAuth();
   let history = useHistory();
   console.log("user from context", user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-        setLoading(false);
-      } else setUser(null);
-    });
-  }, []);
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUser(user);
+          setLoading(false);
+        } else setUser(null);
+      });
+    }, []);
+
 
   async function handleSignup(email, password) {
     setLoading(true);
@@ -75,13 +75,13 @@ export const AuthContextProvider = (props) => {
 // }
 
 // Custom Hook
-// export function useAuth() {
-//   const [currentUser, setCurrentUser] = useState();
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
 
-// useEffect(() => {
-//   const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
-//   return unsub;
-// }, []);
+  // useEffect(() => {
+  //   const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+  //   return unsub;
+  // }, []);
 
-//   return currentUser;
-// }
+  return currentUser;
+}

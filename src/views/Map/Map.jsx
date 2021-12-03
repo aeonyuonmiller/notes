@@ -9,8 +9,7 @@ const Map = () => {
     const { user } = useContext(AuthContext);
     console.log("something", user);
 
-    return (
-        
+    return ( 
         <>
             <div className="topnav">
                 <Button text="Leave note" />
