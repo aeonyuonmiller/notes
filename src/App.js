@@ -30,11 +30,6 @@ function App() {
               <Map />
             </ProtectedRoute>
           </Switch>
-          {/* 
-        <button disabled={loading || currentUser} onClick={handleLogin}>
-        Login
-        </button>
-      */}
         </AuthContextProvider>
       </Router>
     </div>
