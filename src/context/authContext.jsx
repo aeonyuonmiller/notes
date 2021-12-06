@@ -9,9 +9,9 @@ import {
   signOut,
 } from "firebase/auth";
 
-export const AuthContext = createContext();        // 1. create context
-export const AuthContextProvider = (props) => {   // 2. create provider
-  const [user, setUser] = useState(null)         // 3. state and function
+export const AuthContext = createContext();
+export const AuthContextProvider = (props) => {
+  const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
   let history = useHistory();
@@ -35,30 +35,11 @@ export const AuthContextProvider = (props) => {   // 2. create provider
       history.push("/map");
     } catch (error) {
       console.log(error);
-      alert("Account already exists!");
+      alert("Error");
     }
     setLoading(false);
   }
-  // async function handleLogin() {
-  //   setLoading(true);
-  //   try {
-  //     await login(emailRef.current.value, passwordRef.current.value);
-  //   } catch {
-  //     alert("Already logged in!");
-  //   }
-  //   setLoading(false);
-  // }
-  // async function handleLogout() {
-  //   setLoading(true);
-  //   try {
-  //     await logout();
-  //   } catch {
-  //     alert("Error!");
-  //   }
-  //   setLoading(false);
-  // }
 
-  // 4. return provider with its value and inject children component
   return (
     <AuthContext.Provider value={{ user, setUser, handleSignup, loading }}>
       {props.children}
@@ -66,22 +47,18 @@ export const AuthContextProvider = (props) => {   // 2. create provider
   );
 };
 
-// export function logout() {
-//   return signOut(auth);
-// }
+export function logout() {
+  const auth = getAuth();
+  return signOut(auth);
+}
 
-// export function login(email, password) {
-//   return signInWithEmailAndPassword(auth, email, password);
-// }
+export function login(email, password) {
+  const auth = getAuth();
+  return signInWithEmailAndPassword(auth, email, password);
+}
 
 // Custom Hook
 export function useAuth() {
   const [currentUser, setCurrentUser] = useState();
-
-  // useEffect(() => {
-  //   const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
-  //   return unsub;
-  // }, []);
-
   return currentUser;
 }
