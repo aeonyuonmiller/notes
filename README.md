@@ -1,6 +1,6 @@
 # ToDos
 
-Preview: [http://localhost:3000](Coming Soon)
+Preview: [Work in progress](http://localhost:3000)
 
 - [x] complete login
 - [] profile > menu with toggle
