@@ -29,7 +29,7 @@ export const AuthContextProvider = (props) => {
       });
   }, []);
 
-  async function logout() {
+  async function handleLogout() {
     try {
       const auth = getAuth();
       await signOut(auth);
@@ -68,7 +68,7 @@ export const AuthContextProvider = (props) => {
   }
   
   return (
-    <AuthContext.Provider value={{ user, setUser, handleSignup, loading, logout }}>
+    <AuthContext.Provider value={{ user, setUser, handleSignup, loading, handleLogout, handleLogin }}>
       {props.children}
     </AuthContext.Provider>
   );
