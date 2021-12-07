@@ -6,7 +6,7 @@
   align-items: center;
   padding: 0 1.4em;
 }
-.map {
+#map {
   background: grey;
   width: calc(100% - 16px);
   height: calc(100vh - 96px);
