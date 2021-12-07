@@ -13,7 +13,7 @@ const Karte = ReactMapboxGl({
 });
 
 const Map = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     console.log("something", user);
 
     return ( 
@@ -21,7 +21,7 @@ const Map = () => {
             <div className="topnav">
                 <Button text="Leave note" />
                 <h3>Explore</h3>
-                <Button text="Logout"/>
+                <Button onClick={logout} text="Logout"/>
             </div>
             <div id="map">
                 <Karte style="mapbox://styles/mapbox/streets-v9"

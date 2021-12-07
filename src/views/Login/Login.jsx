@@ -23,7 +23,7 @@ const Login = () => {
             <div className="form">
                 <input ref={emailRef} placeholder="Email" />
                 <input ref={passwordRef} placeholder="Password" type="password" />
-                <Button text="Login" />
+                <Button text="Login" onClick={handleLogin} />
             </div>
             <div className="sub-nav">
                 <Linker to="/" text="Register" />

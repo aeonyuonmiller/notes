@@ -12,7 +12,7 @@ import {
 export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const auth = getAuth();
   let history = useHistory();
   console.log("user from context", user);
@@ -22,11 +22,24 @@ export const AuthContextProvider = (props) => {
         if (user) {
           setUser(user);
           setLoading(false);
-        } else setUser(null);
+        } else {
+          setUser(null)
+          setLoading(false);
+        };
       });
-    }, []);
+  }, []);
 
-
+  async function logout() {
+    try {
+      const auth = getAuth();
+      await signOut(auth);
+      setUser(null);
+      history.push("/");
+    } catch (err) {
+      console.log(`err`, err)
+    } 
+  }
+    
   async function handleSignup(email, password) {
     setLoading(true);
     try {
@@ -39,23 +52,27 @@ export const AuthContextProvider = (props) => {
     }
     setLoading(false);
   }
-
+  
+  async function handleLogin(email, password) {
+    setLoading(true);
+    try {
+      const auth = getAuth();
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      setUser(user);
+      history.push("/map");
+    } catch (error) {
+      console.log(error);
+      alert("Logged out");
+    }
+    setLoading(false);
+  }
+  
   return (
-    <AuthContext.Provider value={{ user, setUser, handleSignup, loading }}>
+    <AuthContext.Provider value={{ user, setUser, handleSignup, loading, logout }}>
       {props.children}
     </AuthContext.Provider>
   );
 };
-
-export function logout() {
-  const auth = getAuth();
-  return signOut(auth);
-}
-
-export function login(email, password) {
-  const auth = getAuth();
-  return signInWithEmailAndPassword(auth, email, password);
-}
 
 // Custom Hook
 export function useAuth() {
