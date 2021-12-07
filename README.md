@@ -1,7 +1,7 @@
 # Notes (Project)
 
 This app has a firebase authentication and mapbox-integration.
-The Map displays your current location and show the notes somebody
+The Map displays your current location and shows the notes somebody
 left on the map.
 
 ### ToDos
