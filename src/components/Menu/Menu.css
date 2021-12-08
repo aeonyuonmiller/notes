@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+  width: calc(100% - 8em);
+  padding: 2em;
+  background: var(--brand-mid2);
+  border-radius: 20px;
+}
+
+.wrapper p {
+  color: whitesmoke;
+}

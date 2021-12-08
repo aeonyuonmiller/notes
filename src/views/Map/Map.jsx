@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/authContext'
 import './Map.css'
 
 import Button from '../../components/Button/Button'
+import Avatar from '../../components/Avatar/Avatar';
 
 const Karte = ReactMapboxGl({
   accessToken:
@@ -19,15 +20,16 @@ const Map = () => {
     return ( 
         <>
             <div className="topnav">
-                <Button text="Leave note" />
+                <Button text="Drop note" />
                 <h3>Explore</h3>
-                <Button onClick={handleLogout} text="Logout"/>
+                <Button onClick={handleLogout} text="Logout" />
+                <Avatar />
             </div>
             <div id="map">
                 <Karte style="mapbox://styles/mapbox/streets-v9"
                 containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                        <Feature coordinates={[31.00, 51.3233379650232]} zoom={20} />
+                        <Feature coordinates={[31.00, 51.3233379650232]} />
                     </Layer>
                 </Karte>;
             </div>
