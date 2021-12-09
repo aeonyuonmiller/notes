@@ -1,12 +1,12 @@
 import React, { useContext, useRef, useEffect, useState } from 'react'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Redirect } from 'react-router'
-import { AuthContext } from '../../context/authContext'
-import './Map.css'
+import { AuthContext } from '../../context/authContext';
+import './Map.css';
 
-import Button from '../../components/Button/Button'
+import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
+import Menu from '../../components/Menu/Menu';
 
 const Karte = ReactMapboxGl({
   accessToken:
@@ -15,6 +15,7 @@ const Karte = ReactMapboxGl({
 
 const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
+    const [closeModal, setCloseModal] = useState(false);
     console.log("something", user);
 
     return ( 
@@ -22,8 +23,10 @@ const Map = () => {
             <div className="topnav">
                 <Button text="Drop note" />
                 <h3>Explore</h3>
-                <Button onClick={handleLogout} text="Logout" />
-                <Avatar />
+                {/* <Button onClick={handleLogout} text="Logout" /> */}
+                <Avatar onClick={() => setCloseModal(!closeModal)} />
+                {/* <Menu /> */}
+                {closeModal && (<Menu />)}
             </div>
             <div id="map">
                 <Karte style="mapbox://styles/mapbox/streets-v9"
@@ -31,7 +34,7 @@ const Map = () => {
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
                         <Feature coordinates={[31.00, 51.3233379650232]} />
                     </Layer>
-                </Karte>;
+                </Karte>
             </div>
         </>
     )
