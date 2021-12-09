@@ -11,7 +11,7 @@ left on the map.
 - [x] add logout to menu
 - [] map gets current locations
 - [] notes in db = show on the map (8h)
-- [] no zoom/scroll on map (1h)
+- [x] no zoom/scroll on map (1h)
 - [] add notes to db (lng/lat, email, timestamp) (4h)
 
 ### Preview

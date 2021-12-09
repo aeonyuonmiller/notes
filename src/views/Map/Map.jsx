@@ -9,15 +9,20 @@ import Avatar from '../../components/Avatar/Avatar';
 import Menu from '../../components/Menu/Menu';
 
 const Karte = ReactMapboxGl({
-  accessToken:
-    'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ'
+    accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
+    zoom: 20,
+    maxZoom: 20,
+    interactive: false,
+    attributionControl: false,
+    logoPosition: 'bottom-left',
+    center: [ 30.2416815, 51.5285582 ]
 });
 
 const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
     
     console.log("something", user);
-    
+
     const [modal, setModal] = useState(false);
     const handleModal = () => { setModal(!modal) };
 

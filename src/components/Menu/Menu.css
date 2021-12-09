@@ -21,6 +21,7 @@
   right: 16px;
   height: calc(100% - 75px);
   width: calc(100% - 72px);
+  max-width: 550px;
   padding: 20px;
   background: var(--brand-mid2);
   border-radius: 16px;
