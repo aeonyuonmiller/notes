@@ -8,7 +8,7 @@ left on the map.
 
 - [x] complete login (2h)
 - [x] avatar > toggles menu (2h)
-- [] add logout to menu
+- [x] add logout to menu
 - [] map gets current locations
 - [] notes in db = show on the map (8h)
 - [] no zoom/scroll on map (1h)

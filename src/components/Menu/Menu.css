@@ -37,6 +37,7 @@
   background: var(--brand-mid);
   color: var(--brand-dark);
   font-size: 25px;
+  padding: 0 0 2px 1px;
   display: flex;
   justify-content: center;
   align-items: center;
