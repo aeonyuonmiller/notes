@@ -36,7 +36,7 @@
 .wrapperMenu .close {
   background: var(--brand-mid);
   color: var(--brand-dark);
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,33 @@
   transition: all ease 0.6s;
 }
 
-.wrapperMenu .close:hover {
+.wrapperMenu .close:hover,
+.wrapperMenu .close:focus {
   color: var(--brand-mid);
   background: var(--brand-dark);
+}
+
+.wrapperMenu .logout {
+  color: var(--brand-mid);
+  background: var(--brand-dark);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 1.8rem;
+  right: 2rem;
+  width: 100px;
+  height: 50px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.wrapperMenu .logout:hover {
+  color: var(--brand);
+  transform: scale(1.1);
 }
