@@ -15,8 +15,12 @@ const Karte = ReactMapboxGl({
 
 const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
-    const [closeModal, setCloseModal] = useState(false);
+    
     console.log("something", user);
+    
+    const [modal, setModal] = useState(false);
+    const handleModal = () => { setModal(!modal) };
+
 
     return ( 
         <>
@@ -24,9 +28,8 @@ const Map = () => {
                 <Button text="Drop note" />
                 <h3>Explore</h3>
                 {/* <Button onClick={handleLogout} text="Logout" /> */}
-                <Avatar onClick={() => setCloseModal(!closeModal)} />
-                {/* <Menu /> */}
-                {closeModal && (<Menu />)}
+                <Avatar onClick={handleModal} />
+                {modal && (<Menu closeModal={handleModal} />)}
             </div>
             <div id="map">
                 <Karte style="mapbox://styles/mapbox/streets-v9"
