@@ -62,7 +62,7 @@
   color: var(--brand-mid);
   background: var(--brand-dark);
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 600;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
   display: flex;
@@ -70,7 +70,6 @@
   align-items: center;
   position: absolute;
   bottom: 1.8rem;
-  right: 2rem;
   width: 100px;
   height: 50px;
   border-radius: 40px;
@@ -79,6 +78,9 @@
 }
 
 .wrapperMenu .logout:hover {
-  color: var(--brand);
   transform: scale(1.05);
+}
+
+.wrapperMenu .no-notes {
+  margin-bottom: 90px;
 }
