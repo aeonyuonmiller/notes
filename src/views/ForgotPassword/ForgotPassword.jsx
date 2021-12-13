@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const passwordRef = useRef();
 
     return (
-        <div className="wrapper">
+        <div className="forgotWrapper">
             <div className="title">
                 <div>🌍</div>
                 <p>Forgot <span>my password</span></p>

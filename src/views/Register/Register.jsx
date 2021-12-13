@@ -15,7 +15,7 @@ const Register = () => {
   }
 
   return (
-    <div className="wrapper">
+    <div className="registerWrapper">
       <div className="title">
         <div>🌍</div>
         <p>

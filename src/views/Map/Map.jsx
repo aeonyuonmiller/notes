@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useEffect, useState } from 'react'
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import React, { useContext, useState } from 'react'
+import ReactMapboxGl, { Layer, Feature, GeoJSONLayer } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { AuthContext } from '../../context/authContext';
 import './Map.css';
@@ -10,12 +10,12 @@ import Menu from '../../components/Menu/Menu';
 
 const Karte = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
-    zoom: 20,
-    maxZoom: 20,
-    interactive: false,
+    zoom: 18, // starting zoom
+    // maxZoom: 16,
+    interactive: true,
     attributionControl: false,
     logoPosition: 'bottom-left',
-    center: [ 30.2416815, 51.5285582 ]
+    // center: [30, 35]
 });
 
 const Map = () => {
@@ -25,7 +25,6 @@ const Map = () => {
 
     const [modal, setModal] = useState(false);
     const handleModal = () => { setModal(!modal) };
-
 
     return ( 
         <>
@@ -40,7 +39,7 @@ const Map = () => {
                 <Karte style="mapbox://styles/mapbox/streets-v9"
                 containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                        <Feature coordinates={[31.00, 51.3233379650232]} />
+                        <Feature coordinates={[31.00, 60.323]} />
                     </Layer>
                 </Karte>
             </div>

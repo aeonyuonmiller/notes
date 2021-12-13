@@ -15,7 +15,7 @@ const Login = () => {
     // }
 
     return (
-        <div className="wrapper">
+        <div className="loginWrapper">
             <div className="title">
                 <div>🌍</div>
                 <p>Login <span>your account</span></p>

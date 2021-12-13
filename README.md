@@ -9,6 +9,7 @@ The map displays notes somebody left around your current location.
 - [x] avatar > toggles menu (2h)
 - [x] add logout to menu
 - [x] no zoom/scroll on map (1h)
+      – [x] corrected login/register/forgotPassword views (clashing classes)
 - [] notes in db = show on the map (8h)
 - [] map gets current location (3h)
 - [] add notes to db (lng/lat, email, timestamp) (4h)
