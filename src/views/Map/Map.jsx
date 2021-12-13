@@ -1,5 +1,7 @@
-import React, { useContext, useState } from 'react'
-import ReactMapboxGl, { Layer, Feature, GeoJSONLayer } from 'react-mapbox-gl';
+import React, { useContext, useEffect, useState } from 'react'
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
+import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { AuthContext } from '../../context/authContext';
 import './Map.css';
@@ -10,21 +12,34 @@ import Menu from '../../components/Menu/Menu';
 
 const Karte = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
-    zoom: 18, // starting zoom
-    // maxZoom: 16,
     interactive: true,
     attributionControl: false,
-    logoPosition: 'bottom-left',
-    // center: [30, 35]
+    logoPosition: 'bottom-left'
 });
 
 const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
-    
+    const db = getFirestore();
+
     console.log("something", user);
 
     const [modal, setModal] = useState(false);
     const handleModal = () => { setModal(!modal) };
+    const [messages, setMessages] = useState([]);
+
+    const getTextMessages = async () => {
+        const querySnapshot = await getDocs(collection(db, "messages"));
+        const messages = [];
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+            messages.push(doc.data());
+        });
+        setMessages(messages);
+    }
+
+    useEffect(() => {
+        getTextMessages();
+    }, []);
 
     return ( 
         <>
@@ -36,11 +51,14 @@ const Map = () => {
                 {modal && (<Menu closeModal={handleModal} />)}
             </div>
             <div id="map">
-                <Karte style="mapbox://styles/mapbox/streets-v9"
-                containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
+                <Karte style="mapbox://styles/mapbox/streets-v9" center={[13, 52]} zoom={[18]}
+                    containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                        <Feature coordinates={[31.00, 60.323]} />
-                    </Layer>
+                        
+                    {messages.length !== 0 && messages.map(message =>
+                            <Marker coordinates={[13,52]} />
+                            )}
+                        </Layer>
                 </Karte>
             </div>
         </>
