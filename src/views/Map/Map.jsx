@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-
-import ReactMapboxGl, { Layer, MapContext, Marker } from 'react-mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import './Map.css';
 
 import Button from '../../components/Button/Button';
@@ -26,6 +25,7 @@ const Map = () => {
     const [modal, setModal] = useState(false);
     const handleModal = () => { setModal(!modal) };
     const [messages, setMessages] = useState([]);
+    const [currentPosition, setCurrentPosition] = useState(null);
 
     const getTextMessages = async () => {
         const querySnapshot = await getDocs(collection(db, "messages"));
@@ -35,10 +35,24 @@ const Map = () => {
             messages.push(doc.data());
         });
         setMessages(messages);
+        console.log(messages)
     }
+
+    const getCurrentPosition = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            setCurrentPosition({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+    });
+    } 
 
     useEffect(() => {
         getTextMessages();
+
+        if ("geolocation" in navigator) {
+            console.log("Available");
+            getCurrentPosition();
+        } else {
+            console.log("Not Available");
+        }
     }, []);
 
     return ( 
@@ -50,13 +64,15 @@ const Map = () => {
                 {modal && (<Menu closeModal={handleModal} logoutBtn={handleLogout} />)}
             </div>
             <div id="map">
-                <Karte style="mapbox://styles/mapbox/streets-v9" center={[13.4496, 52.4784]} zoom={[18]}
+                <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[18]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
-                    <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                    {messages.length !== 0 && messages.map(message =>
-                        <Marker coordinates={[13.4496, 52.4784]} anchor="bottom" />
+                    {/* <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}> */}
+                    {messages.length !== 0 && messages.map((message, index) =>
+                        <Marker key={index} coordinates={message.geoInfo} anchor="bottom">
+                            <div className="notes">{message.textMessage}</div>
+                        </Marker>
                     )}
-                    </Layer>
+                    {/* </Layer> */}
                 </Karte>
             </div>
         </>
