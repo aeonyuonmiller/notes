@@ -8,7 +8,7 @@ const Message = ({ close, drop }) => {
             <div className="wrapperMessage">
                 <div className="sendBtn" onClick={drop} tabIndex="2">Drop</div>
                     <form>
-                        <input type="text" placeholder="Note..." />
+                        <input type="text" placeholder="Drop a note..." />
                     </form>
             </div>
             <div className="backdropMessage" onClick={close}></div>

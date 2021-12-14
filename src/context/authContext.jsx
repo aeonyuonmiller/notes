@@ -15,7 +15,6 @@ export const AuthContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
   let history = useHistory();
-  console.log("user from context", user);
 
   useEffect(() => {
       onAuthStateChanged(auth, (user) => {
