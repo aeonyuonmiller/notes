@@ -8,11 +8,12 @@ import Linker from '../../components/Link/Link'
 const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {user, setUser, handleLogin, loading} = useContext(AuthContext)
+    const { handleLogin } = useContext(AuthContext)
+    // const {user, setUser, handleLogin, loading} = useContext(AuthContext)
     
-    // function handleEnter() {
-    //     handleLogin(emailRef.current.value, passwordRef.current.value);
-    // }
+    function handleEnter() {
+        handleLogin(emailRef.current.value, passwordRef.current.value);
+    }
 
     return (
         <div className="loginWrapper">
@@ -23,7 +24,7 @@ const Login = () => {
             <div className="form">
                 <input ref={emailRef} placeholder="Email" />
                 <input ref={passwordRef} placeholder="Password" type="password" />
-                <Button text="Login" onClick={handleLogin} />
+                <Button text="Login" onClick={handleEnter} />
             </div>
             <div className="sub-nav">
                 <Linker to="/" text="Register" />

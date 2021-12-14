@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './Map.css';
 
-import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
 import Drop from '../../components/Drop/Drop';
 import Menu from '../../components/Menu/Menu';
@@ -74,7 +73,8 @@ const Map = () => {
                 {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
             </div>
             <div id="map">
-                {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]} containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
+                {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
+                    containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
                     {messages.length !== 0 && messages.map((message, index) =>
                         <Marker key={index} coordinates={message.geoInfo} anchor="bottom">
                             <div className="notes">{message.textMessage}</div>

@@ -34,10 +34,10 @@ export const AuthContextProvider = (props) => {
       const auth = getAuth();
       await signOut(auth);
       setUser(null);
-      history.push("/");
+      history.push("/login");
     } catch (err) {
       console.log(`err`, err)
-    } 
+    }
   }
     
   async function handleSignup(email, password) {

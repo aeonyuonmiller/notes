@@ -13,7 +13,7 @@ The map displays notes somebody left around your current location.
 - [x] notes in db = show on the map (8h)
 - [x] map get current location (3h)
 - [x] drop note (button, modal + form) (3h)
-- [] add notes to db (lng/lat, email, timestamp) (3h)
+- [] add notes to db (handleSend => lng/lat, email, timestamp) (3h)
 
 ### Preview
 
