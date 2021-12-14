@@ -1,0 +1,19 @@
+.wrapperDrop {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--brand-dark);
+  background-color: var(--brand);
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color ease 0.6s, transform ease 0.3s;
+}
+
+.wrapperDrop:hover {
+  background-color: var(--brand-mid2);
+  transform: scale(0.95);
+}

@@ -7,11 +7,14 @@ import './Map.css';
 
 import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
+import Drop from '../../components/Drop/Drop';
 import Menu from '../../components/Menu/Menu';
+import Message from '../../components/Message/Message';
+import Loading from '../Loading/Loading';
 
 const Karte = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
-    interactive: true,
+    interactive: false,
     attributionControl: false,
     logoPosition: 'bottom-left',
 });
@@ -20,12 +23,17 @@ const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
     const db = getFirestore();
 
-    console.log("something", user);
+    const [drop, setDrop] = useState(false);
+    const toggleDrop = () => { setDrop(!drop) };
 
-    const [modal, setModal] = useState(false);
-    const handleModal = () => { setModal(!modal) };
+    const [menu, setMenu] = useState(false);
+    const handleMenu = () => { setMenu(!menu) };
+
     const [messages, setMessages] = useState([]);
     const [currentPosition, setCurrentPosition] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const handleSend = () => { console.log(user) };
 
     const getTextMessages = async () => {
         const querySnapshot = await getDocs(collection(db, "messages"));
@@ -40,15 +48,16 @@ const Map = () => {
 
     const getCurrentPosition = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
-            setCurrentPosition({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-    });
+            setCurrentPosition({ longitude: position.coords.longitude, latitude: position.coords.latitude })
+        });
+        setLoading(false);
     } 
 
+    // get messages & position of device
     useEffect(() => {
         getTextMessages();
 
         if ("geolocation" in navigator) {
-            console.log("Available");
             getCurrentPosition();
         } else {
             console.log("Not Available");
@@ -58,22 +67,20 @@ const Map = () => {
     return ( 
         <>
             <div className="topnav">
-                <Button text="Drop note" />
+                <Drop onClick={toggleDrop} />
+                {drop ? <Message close={toggleDrop} drop={handleSend} /> : null }
                 <h3>Explore</h3>
-                <Avatar onClick={handleModal} />
-                {modal && (<Menu closeModal={handleModal} logoutBtn={handleLogout} />)}
+                <Avatar onClick={handleMenu} />
+                {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
             </div>
             <div id="map">
-                <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[18]}
-                    containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
-                    {/* <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}> */}
+                {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]} containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
                     {messages.length !== 0 && messages.map((message, index) =>
                         <Marker key={index} coordinates={message.geoInfo} anchor="bottom">
                             <div className="notes">{message.textMessage}</div>
                         </Marker>
                     )}
-                    {/* </Layer> */}
-                </Karte>
+                </Karte> : <Loading />}
             </div>
         </>
     )

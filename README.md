@@ -12,7 +12,8 @@ The map displays notes somebody left around your current location.
       – [x] corrected login/register/forgotPassword views (clashing classes)
 - [x] notes in db = show on the map (8h)
 - [x] map get current location (3h)
-- [] add notes to db (lng/lat, email, timestamp) (4h)
+- [] drop note (button, modal + form) (3h)
+- [] add notes to db (lng/lat, email, timestamp) (3h)
 
 ### Preview
 

@@ -3,7 +3,7 @@ import './Loading.css'
 
 const Loading = () => {
     return (
-        <div className="wrapper">
+        <div className="wrapperLoading">
             <h2>🌍</h2>
             <h1>Inhale <span>while connecting</span></h1>
         </div>

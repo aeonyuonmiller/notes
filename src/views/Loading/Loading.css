@@ -17,18 +17,18 @@ h1 span {
 
 h2 {
   background: var(--brand);
-  border-radius: 50%;
+  border-radius: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;
+  padding: 6px;
   width: 80px;
   height: 80px;
   font-size: 40px;
   text-align: center;
 }
 
-.wrapper {
+.wrapperLoading {
   position: fixed;
   display: flex;
   align-items: center;

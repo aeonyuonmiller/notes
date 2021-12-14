@@ -1,0 +1,87 @@
+.backdropMessage {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  /* -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px); */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.wrapperMessage {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 16px;
+  right: 16px;
+  width: calc(100% - 72px);
+  padding: 20px;
+  background: var(--brand);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.wrapperMessage p {
+  font-weight: bold;
+  color: var(--brand-dark);
+}
+
+.wrapperMessage form {
+  margin-right: auto;
+  width: calc(100% - 80px);
+  color: var(--brand-dark);
+}
+
+.wrapperMessage .close {
+  background: var(--brand-mid);
+  color: var(--brand-dark);
+  font-size: 25px;
+  padding: 0 0 2px 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 0 0 0 20px;
+  cursor: pointer;
+  transition: all ease 0.6s;
+}
+
+.wrapperMessage .close:hover,
+.wrapperMessage .close:focus {
+  color: var(--brand-mid);
+  background: var(--brand-dark);
+}
+
+.wrapperMessage .sendBtn {
+  color: var(--brand-mid);
+  background: var(--brand-dark);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  bottom: 33px;
+  width: 70px;
+  height: 50px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.wrapperMessage .sendBtn:hover {
+  transform: scale(1.05);
+}
