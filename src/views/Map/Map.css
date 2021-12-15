@@ -15,7 +15,10 @@
 }
 
 .notes {
-  background: var(--brand);
+  background: var(--brand-mid);
+  box-shadow: -2px 2px 2px var(--brand-dark);
   padding: 0.8em 1.2em;
   border-radius: 30px;
+  user-select: none;
+  pointer-events: none;
 }
