@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -36,15 +36,21 @@ const Map = () => {
 
     const handleSend = () => { console.log(user) };
 
-    const getTextMessages = async () => {
-        const querySnapshot = await getDocs(collection(db, "messages"));
+    const getTextMessages = async () => {
+        const q = query(collection(db, "messages"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const messages = [];
         querySnapshot.forEach((doc) => {
-            // console.log(`${doc.id} => ${doc.data()}`);
             messages.push(doc.data());
         });
         setMessages(messages);
-        console.log(messages)
+        });
+        // const querySnapshot = await getDocs(collection(db, "messages"));
+        // const messages = [];
+        // querySnapshot.forEach((doc) => {
+        //     messages.push(doc.data());
+        // });
+        // setMessages(messages);
     }
 
     const getCurrentPosition = () => {
@@ -65,11 +71,11 @@ const Map = () => {
         }
     }, []);
 
-    return ( 
+    return (
         <>
             <div className="topnav">
                 <Drop onClick={toggleDrop} />
-                {drop ? <Message close={toggleDrop} drop={handleSend} /> : null }
+                {drop ? <Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude} /> : null }
                 <h3>Explore</h3>
                 <Avatar onClick={handleMenu} />
                 {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}

@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import './Message.css';
-import { getFirestore } from '@firebase/firestore';
+import { getFirestore, collection, addDoc } from '@firebase/firestore';
 
-const Message = ({ close, sendNote }) => {
+const Message = ({ close, longitude, latitude }) => {
 
     const db = getFirestore();
     const [safeText, setText] = useState("");
     const handleTextChange = (e) => {
         setText(e.target.value)
+    }
+
+    const sendNote = async () => {
+        try {
+            const docRef = await addDoc(collection(db, "messages"), {
+                createdAt: new Date(),
+                geoInfo: [longitude, latitude],
+                textMessage: safeText
+            });
+            close();
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
     }
 
     return (
