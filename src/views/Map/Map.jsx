@@ -13,14 +13,16 @@ import Loading from '../Loading/Loading';
 
 const Karte = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
-    interactive: false,
+    interactive: true,
     attributionControl: false,
     logoPosition: 'bottom-left',
 });
 
 const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
+
     const db = getFirestore();
+    console.log('db', db);
 
     const [drop, setDrop] = useState(false);
     const toggleDrop = () => { setDrop(!drop) };
@@ -38,7 +40,7 @@ const Map = () => {
         const querySnapshot = await getDocs(collection(db, "messages"));
         const messages = [];
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
+            // console.log(`${doc.id} => ${doc.data()}`);
             messages.push(doc.data());
         });
         setMessages(messages);
@@ -74,7 +76,7 @@ const Map = () => {
             </div>
             <div id="map">
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
-                    containerStyle={{ height: '100%', width: '100%', borderRadius: '20px' }}>
+                    containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>
                     {messages.length !== 0 && messages.map((message, index) =>
                         <Marker key={index} coordinates={message.geoInfo} anchor="bottom">
                             <div className="notes">{message.textMessage}</div>

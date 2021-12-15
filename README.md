@@ -15,7 +15,7 @@ The map displays notes somebody left around your current location.
 - [x] drop note (button, modal + form) (3h)
 - [] add notes to db (handleSend => lng/lat, email, timestamp) (3h)
 - [] show viewed notes in menu (5h)
-- [] when dropNote toggled, move map 80px up
+- [] when dropNote toggled, move map 80px up (transition)
 
 ### Preview
 
