@@ -80,7 +80,7 @@ const Map = () => {
                 <Avatar onClick={handleMenu} />
                 {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
             </div>
-            <div id="map">
+            <div id={drop ? "mapped" : "map"}>
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>
                     {messages.length !== 0 && messages.map((message, index) =>
