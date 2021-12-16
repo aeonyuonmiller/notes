@@ -7,14 +7,17 @@
   padding: 0 1.4em;
 }
 #map {
-  background: grey;
+  /* background: grey; */
   width: calc(100% - 16px);
   height: calc(100vh - 96px);
   margin: 0 8px;
   border-radius: 22px;
+  transition: all ease 0.4s;
+  transform: translateY(0px);
 }
 
 #mapped {
+  margin: 0 8px;
   transform: translateY(-50px);
 }
 

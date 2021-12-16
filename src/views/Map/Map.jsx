@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+// import { motion } from "framer-motion"
 import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
@@ -13,7 +14,7 @@ import Loading from '../Loading/Loading';
 
 const Karte = ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoiYWVvbnl1b25taWxsZXIiLCJhIjoiY2phMTIybmNsMjFjeTMzbGdpcGdiM3J6ayJ9.FmtdgLWmMf4vgsagMsk-JQ',
-    interactive: true,
+    interactive: false,
     attributionControl: false,
     logoPosition: 'bottom-left',
 });
@@ -45,12 +46,6 @@ const Map = () => {
         });
         setMessages(messages);
         });
-        // const querySnapshot = await getDocs(collection(db, "messages"));
-        // const messages = [];
-        // querySnapshot.forEach((doc) => {
-        //     messages.push(doc.data());
-        // });
-        // setMessages(messages);
     }
 
     const getCurrentPosition = () => {
