@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import {
   Route,
   Switch,
@@ -19,20 +20,22 @@ import ProtectedRoute from "./context/protectedRoute";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <AuthContextProvider>
-          <Switch>
-            <Route path="/" exact component={Register} />
-            <Route path="/login" component={Login} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <ProtectedRoute exact path="/map">
-              <Map />
-            </ProtectedRoute>
-          </Switch>
-        </AuthContextProvider>
-      </Router>
-    </div>
+    <AnimatePresence>
+      <div className="App">
+        <Router>
+          <AuthContextProvider>
+            <Switch>
+              <Route path="/" exact component={Register} />
+              <Route path="/login" component={Login} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+              <ProtectedRoute exact path="/map">
+                <Map />
+              </ProtectedRoute>
+            </Switch>
+          </AuthContextProvider>
+        </Router>
+      </div>
+    </AnimatePresence>
   );
 }
 

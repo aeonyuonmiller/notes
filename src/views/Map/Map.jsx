@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-// import { motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
@@ -75,7 +75,8 @@ const Map = () => {
                 <Avatar onClick={handleMenu} />
                 {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
             </div>
-            <div id={drop ? "mapped" : "map"}>
+            {/* <div id={drop ? "mapped" : "map"}> */}
+            <div id="map">
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>
                     {messages.length !== 0 && messages.map((message, index) =>
