@@ -20,7 +20,7 @@ import ProtectedRoute from "./context/protectedRoute";
 
 function App() {
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       <div className="App">
         <Router>
           <AuthContextProvider>

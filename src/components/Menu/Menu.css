@@ -1,3 +1,10 @@
+::selection {
+  background: transparent;
+}
+::-moz-selection {
+  background: transparent;
+}
+
 .backdrop {
   position: absolute;
   background: rgba(0, 0, 0, 0.01);
@@ -32,6 +39,7 @@
 .wrapperMenu p {
   font-weight: bold;
   color: var(--brand-dark);
+  pointer-events: none;
 }
 
 .wrapperMenu .close {
