@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
@@ -67,26 +67,26 @@ const Map = () => {
     }, []);
 
     return (
-        <>
-            <div className="topnav">
+        <AnimatePresence exitBeforeEnter>
+            <motion.div className="topnav" initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0, transition:{ type: "tween", delay: 0.2 }}}>
                 <Drop onClick={toggleDrop} />
                 {drop ? <Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude} /> : null }
                 <h3>Explore</h3>
                 <Avatar onClick={handleMenu} />
                 {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
-            </div>
+            </motion.div>
             {/* <div id={drop ? "mapped" : "map"}> */}
             <div id="map">
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>
                     {messages.length !== 0 && messages.map((message, index) =>
                         <Marker key={index} coordinates={message.geoInfo} anchor="bottom">
-                            <div className="notes">{message.textMessage}</div>
+                            <motion.div initial={{opacity:0}} animate={{opacity:1}} className="notes">{message.textMessage}</motion.div>
                         </Marker>
                     )}
                 </Karte> : <Loading />}
             </div>
-        </>
+        </AnimatePresence>
     )
 }
 

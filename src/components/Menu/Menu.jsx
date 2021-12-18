@@ -6,16 +6,18 @@ import './Menu.css';
 const Menu = ({ closeModal, logoutBtn }) => {
 
     return (
-        <motion.div className="backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <AnimatePresence exitBeforeEnter>
+        <motion.div className="backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div className="wrapperMenu" initial={{ opacity: 0, x: 300, rotate: 5 }} animate={{ opacity: 1, x: 0, rotate: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ type: "spring", stiffness: 700, damping: 70 }}>
                 <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
                 <div className="logout" onClick={logoutBtn} tabIndex="2">Logout</div>
                 <div className="no-notes">
                     <IlluNote />
-                    <p>Keep looking for notes...</p>
+                        <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 700, damping: 70 }}>Keep looking for notes...</motion.p>
                 </div>
             </motion.div>
         </motion.div>
+        </AnimatePresence>
     )
 }
 
