@@ -73,7 +73,7 @@ const Map = () => {
                 {drop ? <Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude} /> : null }
                 <h3>Explore</h3>
                 <Avatar onClick={handleMenu} />
-                {menu && (<Menu key="menuz" closeModal={handleMenu} logoutBtn={handleLogout} />)}
+                {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
             </motion.div>
             {/* <div id={drop ? "mapped" : "map"}> */}
             <div id="map">
