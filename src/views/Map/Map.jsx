@@ -1,10 +1,10 @@
+import './Map.css';
 import React, { useContext, useEffect, useState } from 'react'
 import { motion, AnimatePresence } from "framer-motion"
 import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './Map.css';
 
 import Avatar from '../../components/Avatar/Avatar';
 import Drop from '../../components/Drop/Drop';
@@ -67,13 +67,13 @@ const Map = () => {
     }, []);
 
     return (
-        <AnimatePresence exitBeforeEnter>
+        <>
             <motion.div className="topnav" initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0, transition:{ type: "tween", delay: 0.2 }}}>
                 <Drop onClick={toggleDrop} />
                 {drop ? <Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude} /> : null }
                 <h3>Explore</h3>
                 <Avatar onClick={handleMenu} />
-                {menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}
+                <AnimatePresence exitBeforeEnter>{menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}</AnimatePresence>
             </motion.div>
             {/* <div id={drop ? "mapped" : "map"}> */}
             <div id="map">
@@ -86,7 +86,7 @@ const Map = () => {
                     )}
                 </Karte> : <Loading />}
             </div>
-        </AnimatePresence>
+        </>
     )
 }
 

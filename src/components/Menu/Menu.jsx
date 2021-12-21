@@ -6,18 +6,25 @@ import './Menu.css';
 const Menu = ({ closeModal, logoutBtn }) => {
 
     return (
-        <AnimatePresence exitBeforeEnter>
-        <motion.div className="backdrop" key="backdropp" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <motion.div className="wrapperMenu" key="whuut" initial={{ scale: 0.95, opacity: 0, x: 300, rotate: 8 }} animate={{ scale: 1, opacity: 1, x: 0, rotate: 0 }} exit={{ opacity: 0, x: -100 }} transition={{ type: "spring", stiffness: 700, damping: 70 }}>
-                <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
-                <motion.div className="logout" whileHover={{ scale: 1.1 }} initial={{ scale: 0 }} animate={{ scale: 1 }} onClick={logoutBtn} tabIndex="2">Logout</motion.div>
-                <div className="no-notes">
-                    <IlluNote />
+            <motion.div className="backdrop"
+                key="whut"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}>
+                <motion.div className="wrapperMenu"
+                    key="whii"
+                    initial={{ scale: 0.95, opacity: 0, x: 300, rotate: 8 }}
+                    animate={{ scale: 1, opacity: 1, x: 0, rotate: 0 }}
+                    exit={{ x: "100%", opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 700, damping: 70 }}>
+                    <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
+                    <motion.div className="logout" whileHover={{ scale: 1.1 }} initial={{ scale: 0 }} animate={{ scale: 1 }} onClick={logoutBtn} tabIndex="2">Logout</motion.div>
+                    <div className="no-notes">
+                        <IlluNote />
                         <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 700, damping: 70 }}>Keep looking for notes...</motion.p>
-                </div>
+                    </div>
+                </motion.div>
             </motion.div>
-        </motion.div>
-        </AnimatePresence>
     )
 }
 
