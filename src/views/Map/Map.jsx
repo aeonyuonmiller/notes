@@ -71,13 +71,12 @@ const Map = () => {
             <motion.div className="topnav" initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0, transition:{ type: "tween", delay: 0.2 }}}>
                 <Drop onClick={toggleDrop} />
                 {drop
-                    ? <AnimatePresence exitBeforeEnter><Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude} /></AnimatePresence>
+                    ? <AnimatePresence exitBeforeEnter><Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude}/></AnimatePresence>
                     : null }
                 <h3>Explore</h3>
                 <Avatar onClick={handleMenu} />
                 <AnimatePresence exitBeforeEnter>{menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}</AnimatePresence>
             </motion.div>
-            {/* <div id={drop ? "mapped" : "map"}> */}
             <div id="map">
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>

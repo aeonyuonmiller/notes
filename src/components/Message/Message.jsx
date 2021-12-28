@@ -24,28 +24,15 @@ const Message = ({ close, longitude, latitude }) => {
         }
     }
 
-    const anim = {
-        initial: {
-            opacity: 0,
-            y: 8,
-        },
-        enter: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.4,
-                ease: [0.61, 1, 0.88, 1],
-            },
-        },
-        exit: {
-            opacity: 0,
-            y: 20,
-        }
+    const variants = {
+        initial: { opacity: 0, y: 20 },
+        enter: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.61, 1, 0.88, 1] }},
+        exit: { opacity: 0, y: 50 }
     }
 
     return (
         <AnimatePresence exitBeforeEnter>
-            <motion.div className="wrapperMessage" initial="initial" animate="enter" exit="exit" variants={anim} >
+            <motion.div className="wrapperMessage" initial="initial" animate="enter" exit="exit" variants={variants} >
                 <div className="sendBtn" onClick={sendNote} tabIndex="2">Drop</div>
                     <form>
                         <input type="text" placeholder="Drop a note..." value={safeText} onChange={handleTextChange} />
