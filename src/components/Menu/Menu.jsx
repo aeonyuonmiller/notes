@@ -13,9 +13,9 @@ const Menu = ({ closeModal, logoutBtn }) => {
                 exit={{ opacity: 0 }}>
                 <motion.div className="wrapperMenu"
                     key="whii"
-                    initial={{ scale: 0.95, opacity: 0, x: 300, rotate: 8 }}
+                    initial={{ scale: 0.95, opacity: 1, x: 300, rotate: 8 }}
                     animate={{ scale: 1, opacity: 1, x: 0, rotate: 0 }}
-                    exit={{ scale: 0.9, x: 500, y: -50, opacity: 1, rotate: -2 }}
+                    exit={{ x: 500, opacity: 1 }}
                     transition={{ type: "spring", stiffness: 700, damping: 70 }}>
                     <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
                     <motion.div className="logout" whileHover={{ scale: 1.1 }} initial={{ scale: 0 }} animate={{ scale: 1 }} onClick={logoutBtn} tabIndex="2">Logout</motion.div>
