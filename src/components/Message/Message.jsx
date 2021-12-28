@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Message.css';
 import { getFirestore, collection, addDoc } from '@firebase/firestore';
 
@@ -23,16 +24,35 @@ const Message = ({ close, longitude, latitude }) => {
         }
     }
 
+    const anim = {
+        initial: {
+            opacity: 0,
+            y: 8,
+        },
+        enter: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.4,
+                ease: [0.61, 1, 0.88, 1],
+            },
+        },
+        exit: {
+            opacity: 0,
+            y: 20,
+        }
+    }
+
     return (
-        <>
-            <div className="wrapperMessage">
+        <AnimatePresence exitBeforeEnter>
+            <motion.div className="wrapperMessage" initial="initial" animate="enter" exit="exit" variants={anim} >
                 <div className="sendBtn" onClick={sendNote} tabIndex="2">Drop</div>
                     <form>
                         <input type="text" placeholder="Drop a note..." value={safeText} onChange={handleTextChange} />
                     </form>
-            </div>
+            </motion.div>
             <div className="backdropMessage" onClick={close}></div>
-        </>
+        </AnimatePresence>
     )
 }
 
