@@ -10,12 +10,12 @@ const Menu = ({ closeModal, logoutBtn }) => {
                 key="whut"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}>
+                exit={{ opacity: 0, transition:{ type: "tween", delay: .2 }}}>
                 <motion.div className="wrapperMenu"
                     key="whii"
                     initial={{ scale: 0.95, opacity: 1, x: 300, rotate: 8 }}
-                    animate={{ scale: 1, opacity: 1, x: 0, rotate: 0 }}
-                    exit={{ x: 500, opacity: 1 }}
+                    animate={{ scale: 1, opacity: [0, 1, 1], x: 0, rotate: 0 }}
+                    exit={{ x: 50, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 700, damping: 70 }}>
                     <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
                     <motion.div className="logout" whileHover={{ scale: 1.1 }} initial={{ scale: 0 }} animate={{ scale: 1 }} onClick={logoutBtn} tabIndex="2">Logout</motion.div>

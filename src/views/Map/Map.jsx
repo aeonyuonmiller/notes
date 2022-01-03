@@ -68,7 +68,7 @@ const Map = () => {
 
     return (
         <>
-            <motion.div className="topnav" initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0, transition:{ type: "tween", delay: 0.2 }}}>
+            <motion.div className="topnav" initial={{ opacity:0, y:-10 }} animate={{ opacity: 1, y:0, transition:{ type: "tween", delay: 0.2 }}}>
                 <Drop onClick={toggleDrop} />
                 {drop
                     ? <AnimatePresence exitBeforeEnter><Message close={toggleDrop} drop={handleSend} longitude={currentPosition.longitude} latitude={currentPosition.latitude}/></AnimatePresence>
