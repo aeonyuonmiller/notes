@@ -6,7 +6,7 @@
   align-items: center;
   padding: 0 1.4em;
 }
-#map {
+.map {
   /* background: grey; */
   width: calc(100% - 16px);
   height: calc(100vh - 96px);
@@ -21,9 +21,13 @@
   transform: translateY(-50px);
 }
 
+.moveUp {
+  transform: translateY(-80px);
+}
+
 .notes {
-  background: var(--brand-mid);
-  box-shadow: -2px 2px 2px var(--brand-dark);
+  background: #f8feb4;
+  border: 0.5px solid hsl(65, 50%, 60%);
   padding: 0.8em 1.2em;
   border-radius: 30px;
   user-select: none;

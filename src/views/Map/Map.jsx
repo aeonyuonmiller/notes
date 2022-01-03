@@ -1,6 +1,6 @@
 import './Map.css';
 import React, { useContext, useEffect, useState } from 'react'
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion"
 import { getFirestore, collection, getDocs, doc, onSnapshot, where, query } from "firebase/firestore";
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import { AuthContext } from '../../context/authContext';
@@ -77,7 +77,8 @@ const Map = () => {
                 <Avatar onClick={handleMenu} />
                 <AnimatePresence exitBeforeEnter>{menu && (<Menu closeModal={handleMenu} logoutBtn={handleLogout} />)}</AnimatePresence>
             </motion.div>
-            <div id="map">
+            <AnimateSharedLayout>
+                <div className={`map ${drop ? "moveUp" : ""}`}>
                 {currentPosition && !loading ? <Karte style="mapbox://styles/mapbox/streets-v9" center={[currentPosition.longitude, currentPosition.latitude]} zoom={[19]}
                     containerStyle={{ height: '100%', width: '100%', borderRadius: '20px', zIndex: 2 }}>
                     {messages.length !== 0 && messages.map((message, index) =>
@@ -87,6 +88,7 @@ const Map = () => {
                     )}
                 </Karte> : <Loading />}
             </div>
+            </AnimateSharedLayout>
         </>
     )
 }
