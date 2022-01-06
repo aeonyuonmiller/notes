@@ -17,12 +17,8 @@ const Menu = ({ closeModal, logoutBtn }) => {
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0, transition:{ type: "tween", delay: .2}}}>
-                <motion.div className="wrapperMenu"
-                    variants={menuV}
-                    initial="initial"
-                    animate="enter"
-                    exit="exit"
-                    transition="transition">
+                <motion.div className="wrapperMenu" variants={menuV}
+                    initial="initial" animate="enter" exit="exit" transition="transition">
                     <div className="close" onClick={closeModal} tabIndex="1">&times;</div>
                     <motion.div className="logout" whileHover={{scale: 1.1}} initial={{scale: 0}} animate={{scale: 1}} exit={{scale: 0}} onClick={logoutBtn} tabIndex="2">Logout</motion.div>
                     <div className="no-notes">
