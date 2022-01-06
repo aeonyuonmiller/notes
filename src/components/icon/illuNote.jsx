@@ -24,7 +24,7 @@ function IlluNote() {
         d="M54.052 43.949H71.05199999999999V58.949H54.052z"
         transform="rotate(.5 54.052 43.95)"
       ></path>
-      <motion.g animate={{ x: [0, 25, 10, 0], y: [0, -5, -15, 0] }}
+      <motion.g animate={{x: [0, 25, 10, 0], y: [0, -5, -15, 0] }}
         transition={{ type: "tween", repeat: Infinity, duration: 3 }}>
         <circle
         r="12.5"
