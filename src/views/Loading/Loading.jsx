@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div className="wrapperLoading">
             <h2>🌍</h2>
-            <h1>Inhale <span>while connecting</span></h1>
+            <h1>Inhale</h1>
         </div>
     )
 }
