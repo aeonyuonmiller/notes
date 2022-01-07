@@ -23,14 +23,16 @@ const Map = () => {
     const { user, handleLogout } = useContext(AuthContext);
 
     const db = getFirestore();
-    console.log('db', db);
 
+    // state for dropping a note
     const [drop, setDrop] = useState(false);
     const toggleDrop = () => { setDrop(!drop) };
 
+    // state for menu
     const [menu, setMenu] = useState(false);
     const handleMenu = () => { setMenu(!menu) };
 
+    // storing frontend info
     const [messages, setMessages] = useState([]);
     const [currentPosition, setCurrentPosition] = useState(null);
     const [loading, setLoading] = useState(true);

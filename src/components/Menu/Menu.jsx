@@ -6,10 +6,9 @@ import './Menu.css';
 const Menu = ({ closeModal, logoutBtn }) => {
 
     const menuV = {
-        initial: { scale: 0.95, opacity: 1, x: 300, rotate: 8 },
-        enter: { scale: 1, opacity: [0, 1, 1], x: 0, rotate: 0 },
+        initial: { scale: 0.95, opacity: 1, x: 300, rotate: 8, transition: { type: "spring", stiffness: 700, damping: 70 } },
+        enter: { scale: 1, opacity: [0, 1, 1], x: 0, rotate: 0, transition: { type: "spring", stiffness: 700, damping: 70 }},
         exit: { x: 50, opacity: 0 },
-        transition: { type: "spring", stiffness: 700, damping: 70 }
     }
 
     return (
