@@ -24,4 +24,4 @@ The map displays notes somebody left around your current location.
 
 ### Preview
 
-Preview: [Work in progress](http://localhost:3000)
+[Preview](http://notes-firebase.netlify.app)
